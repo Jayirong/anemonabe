@@ -25,6 +25,8 @@ public class AuthController {
         String username = credentials.get("username");
         String password = credentials.get("password");
 
+        System.out.println("Username: " + username + ", Password: " + password);
+
         try {
             String token = userService.authenticateAndGenerateToken(username, password);
             return ResponseEntity.ok(Map.of("token", token));

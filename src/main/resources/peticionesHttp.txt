@@ -1,0 +1,104 @@
+### Solicitudes HTTP para Postman - Backend en localhost:8080
+
+#### 1. Registrar un usuario
+```
+POST http://localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+  "username": "testUser",
+  "nombre": "Nombre",
+  "apellido": "Apellido",
+  "password": "password123",
+  "roles": ["USER"],
+  "estado": true
+}
+```
+
+#### 2. Iniciar sesión y obtener el token
+```
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testUser",
+  "password": "password123"
+}
+```
+
+#### 3. Obtener detalles del usuario autenticado (requiere token)
+```
+GET http://localhost:8080/api/user/me
+Authorization: Bearer {TOKEN}
+```
+
+#### 4. Actualizar información del usuario autenticado (requiere token)
+```
+PUT http://localhost:8080/api/user/updateme
+Content-Type: application/json
+Authorization: Bearer {TOKEN}
+
+{
+  "nombre": "NuevoNombre",
+  "apellido": "NuevoApellido",
+  "password": "newPassword123"
+}
+```
+
+#### 5. Obtener todos los usuarios (requiere rol ADMIN)
+```
+GET http://localhost:8080/api/admin/users
+Authorization: Bearer {TOKEN}
+```
+
+#### 6. Obtener un usuario por ID (requiere rol ADMIN)
+```
+GET http://localhost:8080/api/admin/user/id/{id}
+Authorization: Bearer {TOKEN}
+```
+
+#### 7. Eliminar un usuario por ID (requiere rol ADMIN)
+```
+DELETE http://localhost:8080/api/admin/user/delete/{id}
+Authorization: Bearer {TOKEN}
+```
+
+#### 8. Agregar un producto (requiere rol ADMIN)
+```
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Authorization: Bearer {TOKEN}
+
+{
+  "nombre": "Producto1",
+  "descripcion": "Descripción del producto",
+  "precio": 1000,
+  "tipo": ["OVILLO"],
+  "stock": 50
+}
+```
+
+#### 9. Obtener todos los productos
+```
+GET http://localhost:8080/api/products
+```
+
+#### 10. Actualizar un producto por ID (requiere rol ADMIN)
+```
+PUT http://localhost:8080/api/products/{productId}
+Content-Type: application/json
+Authorization: Bearer {TOKEN}
+
+{
+  "nombre": "ProductoActualizado",
+  "descripcion": "Nueva descripción",
+  "precio": 1200,
+  "tipo": ["PALILLO"],
+  "stock": 30
+}
+```
+
+#### 11. Eliminar un producto por ID (requiere rol ADMIN)
+```
+DELETE http://localhost:8080/api/products/{productId}
+Authorization: Bearer {TOKEN}

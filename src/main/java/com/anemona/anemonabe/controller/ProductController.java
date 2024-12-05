@@ -18,7 +18,7 @@ import com.anemona.anemonabe.model.Product;
 import com.anemona.anemonabe.service.ProductService;
 
 @RestController
-@RequestMapping("/api/recipes")
+@RequestMapping("/api/products")
 public class ProductController {
     
     @Autowired
